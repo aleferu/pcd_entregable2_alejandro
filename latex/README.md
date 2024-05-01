@@ -28,5 +28,4 @@ Aunque no se debería hacer, se deja el documento generado en el repositorio por
 
 - Patrones de diseño explicados.
 - Dos tags.
-- Crear el GitHub.
-- Capturas de las dos anteriores.
+- Capturas de lo anterior.
