@@ -2,6 +2,38 @@
 
 En esta sección se pide una justificación de cada patrón de diseño implementado.
 
-\subsection{TODO}
+\subsection{Patrón R1 - Singleton}
 
-\textbf{TODO}
+Se pide: ``Debe de existir una única instancia del sistema que gestione todos los componentes y recursos del entorno IoT''. El comienzo de la oración (``debe de existir una única instancia'') ya me indica que el patrón de diseño \textit{singleton} tiene sentido en este contexto. La clase a la que he asociado este patrón de diseño se llama \texttt{Sistema}.
+
+Lo que busco es tener un objeto, y solo uno, en mi programa que se encargue de recibir los datos del sensor de temperaturas y hacer lo que tenga que hacer con ella. Este objeto será el responsable de enviar la temperatura a donde haga falta para que los pasos definidos en \textit{R3} tengan lugar.
+
+\subsection{Patrón R2 - Observer}
+
+Este patrón de diseño está implementado en dos sitios.
+
+\begin{enumerate}
+    \item Primero trataré a una clase llamada \texttt{SensorTemperatura} como la clase publicadora. Esta clase utilizará el software \textit{Apache Kafka} para publicar las temperaturas y su \textit{timestamp} asociado. La clase que recibirá esta información será la ya mencionada \texttt{Sistema}, que se encargará de mandar hacer los cálculos necesarios para que todo funcione perfectamente.
+
+    \item Después, la propia clase \texttt{Sistema} volverá a actuar de clase publicadora, mandando la temperatura a los objetos que necesite para que lo que se pide en el enunciado se realice. La clase que actúa de observador en este caso es la clase \texttt{CalculaEstadísticos}, la cual actúa de primer eslabón en la cadena de responsabilidad que se explica en la siguiente subsección.
+\end{enumerate}
+
+\subsection{Patrón R3 - Chain of Responsability}
+
+La idea detrás de este patrón de diseño en esta implementación es que, tal y como se pide en el enunciado, suceda lo siguiente, y en ese orden:
+
+\begin{enumerate}
+    \item Se calculan unos estadísticos. Más sobre esto en la subsección siguiente. Clase \texttt{CalculaEstadisticos}.
+
+    \item Se comprueba que la temperatura no alcance cierto valor. Clase \texttt{ComprobadorUmbral}.
+
+    \item Se comprueba si, durante los últimos 30 segundos, la temperatura ha aumentado más de 10 grados centígrados. Clase \texttt{ComprobadorDelta}.
+\end{enumerate}
+
+El patrón de \textit{Chain of Responsability} tiene sentido porque se pide que se ejecuten estas acciones una detrás de la otra. Así, será el objeto de la clase \texttt{CalculaEstadisticos} el que se encargará de que el objeto de la clase \texttt{ComprobadorUmbral} haga su papel una vez se hayan calculado todos los estadísticos. De igual manera, será el objeto de la clase \texttt{ComprobadorUmbral} el que se encargará de que el objeto de la clase \texttt{ComprobadorDelta} haga su papel una vez haya terminado su trabajo.
+
+Todas estas clases heredarán de una clase \texttt{ManejaTemperaturas}, clase que contiene la estructura que estas tres clases deben tener en común para cumplir con el esquema del patrón de diseño \textit{Chain of Responsability}.
+
+\subsection{Patrón R4 - Strategy}
+
+Se pide que se deben tener diferentes estrategias para computar los estadísticos. Para la implementación, será el objeto de la clase \texttt{CalculaEstadisticos} el que se encargará de contener objetos especializados en las distintas estrategias de cálculo de estadísticos. Estos objetos especializados en las distintas estrategias serán todas instancias de clases que heredan de \texttt{CalculadoraEstadistico}.
