@@ -19,6 +19,10 @@ Las clases proporcionadas son:
 - CalculadoraMin
 - CalculadoraCuasiVar
 - CalculadoraMediana
+- ManejaTemperaturas,
+- CalculaEstadisticos,
+- ComprobadorUmbral,
+- ComprobadorDelta
 """
 
 from .estadisticos import (
@@ -30,8 +34,14 @@ from .estadisticos import (
     CalculadoraCuasiVar,
     CalculadoraMediana
 )
+from .cadena import (
+    ManejaTemperaturas,
+    CalculaEstadisticos,
+    ComprobadorUmbral,
+    ComprobadorDelta
+)
 
-del estadisticos
+del estadisticos, cadena
 
 __all__ = [
     "CalculadoraEstadistico",
@@ -40,5 +50,9 @@ __all__ = [
     "CalculadoraMax",
     "CalculadoraMin",
     "CalculadoraCuasiVar",
-    "CalculadoraMediana"
+    "CalculadoraMediana",
+    "ManejaTemperaturas",
+    "CalculaEstadisticos",
+    "ComprobadorUmbral",
+    "ComprobadorDelta"
 ]
