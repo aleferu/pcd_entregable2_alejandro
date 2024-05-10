@@ -36,6 +36,8 @@ class CalculadoraMin(CalculadoraEstadistico):
 
 class CalculadoraQuasiVar(CalculadoraEstadistico):
     def aplicar_alg(self, valores: list[float]) -> float:
+        if len(valores) == 1:
+            return 0
         media = reduce(lambda acc, x: acc + x, valores) / len(valores)
         return reduce(lambda acc, valor: acc + (valor - media) ** 2, valores, 0) / (len(valores) - 1)
 

@@ -74,10 +74,14 @@ def test_var():
         [4, 5, 6],
         list(range(5)),
         [1, 2, 3, 4],
-        [1.3, 4.5, 8.4]
+        [1.3, 4.5, 8.4],
+        [5]
     ]
     for lista in listas_de_prueba:
-        assert calculadora.aplicar_alg(lista) == statistics.variance(lista)
+        try:
+            assert calculadora.aplicar_alg(lista) == statistics.variance(lista)
+        except statistics.StatisticsError:
+            assert calculadora.aplicar_alg(lista) == 0
 
 
 def test_median():
