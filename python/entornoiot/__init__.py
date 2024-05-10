@@ -17,7 +17,7 @@ Las clases proporcionadas son:
 - CalculadoraModa
 - CalculadoraMax
 - CalculadoraMin
-- CalculadoraQuasiVar
+- CalculadoraCuasiVar
 - CalculadoraMediana
 """
 
@@ -27,7 +27,7 @@ from .estadisticos import (
     CalculadoraModa,
     CalculadoraMax,
     CalculadoraMin,
-    CalculadoraQuasiVar,
+    CalculadoraCuasiVar,
     CalculadoraMediana
 )
 
@@ -39,6 +39,6 @@ __all__ = [
     "CalculadoraModa",
     "CalculadoraMax",
     "CalculadoraMin",
-    "CalculadoraQuasiVar",
+    "CalculadoraCuasiVar",
     "CalculadoraMediana"
 ]

@@ -4,7 +4,7 @@ from entornoiot import (
     CalculadoraModa,
     CalculadoraMax,
     CalculadoraMin,
-    CalculadoraQuasiVar,
+    CalculadoraCuasiVar,
     CalculadoraMediana
 )
 
@@ -69,7 +69,7 @@ def test_min():
 
 
 def test_var():
-    calculadora = CalculadoraQuasiVar()
+    calculadora = CalculadoraCuasiVar()
     listas_de_prueba = [
         [4, 5, 6],
         list(range(5)),

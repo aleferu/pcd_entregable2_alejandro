@@ -34,7 +34,7 @@ class CalculadoraMin(CalculadoraEstadistico):
         return min(valores)
 
 
-class CalculadoraQuasiVar(CalculadoraEstadistico):
+class CalculadoraCuasiVar(CalculadoraEstadistico):
     def aplicar_alg(self, valores: list[float]) -> float:
         if len(valores) == 1:
             return 0
