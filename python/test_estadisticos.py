@@ -87,6 +87,7 @@ def test_median():
         list(range(5)),
         [1, 2, 3, 4],
         [1.3, 4.5, 8.4],
+        [1.3, 8.4, 4.5],
         [0]
     ]
     for lista in listas_de_prueba:

@@ -43,7 +43,8 @@ class CalculadoraQuasiVar(CalculadoraEstadistico):
 class CalculadoraMediana(CalculadoraEstadistico):
     def aplicar_alg(self, valores: list[float]) -> float:
         half_index = int(len(valores) / 2)
+        lista_ordenada = sorted(valores)
         print(half_index)
-        if len(valores) % 2 == 1:
-            return valores[half_index]
-        return (valores[half_index - 1] + valores[half_index]) / 2
+        if len(lista_ordenada) % 2 == 1:
+            return lista_ordenada[half_index]
+        return (lista_ordenada[half_index - 1] + lista_ordenada[half_index]) / 2
