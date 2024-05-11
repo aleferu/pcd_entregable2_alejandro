@@ -15,11 +15,12 @@ class CalculadoraMedia(CalculadoraEstadistico):
 
 class CalculadoraModa(CalculadoraEstadistico):
     def aplicar_alg(self, valores: list[float]) -> float:
+        valores_redondeados = list(map(lambda valor: round(valor), valores))
         return reduce(
             lambda moda, candidato: moda if moda[1] > candidato[1] else candidato,
             dict(map(
-                lambda valor: (valor, reduce(lambda acc, _: acc + 1, filter(lambda x: x == valor, valores), 0)),
-                valores
+                lambda valor: (valor, reduce(lambda acc, _: acc + 1, filter(lambda x: x == valor, valores_redondeados), 0)),
+                valores_redondeados
             )).items()
         )[0]
 
@@ -46,7 +47,6 @@ class CalculadoraMediana(CalculadoraEstadistico):
     def aplicar_alg(self, valores: list[float]) -> float:
         half_index = int(len(valores) / 2)
         lista_ordenada = sorted(valores)
-        print(half_index)
         if len(lista_ordenada) % 2 == 1:
             return lista_ordenada[half_index]
         return (lista_ordenada[half_index - 1] + lista_ordenada[half_index]) / 2

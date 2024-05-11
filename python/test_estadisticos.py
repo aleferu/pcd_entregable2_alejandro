@@ -34,8 +34,7 @@ def test_moda():
         [4, 4, 5, 6],
         [4, 5, 6, 6],
         list(range(5)),
-        [0],
-        [1.3, 4.5, 8.4]
+        [0.0]
     ]
     for lista in listas_de_prueba:
         #  reversed porque si no hay moda statistics coge el primer valor, mientras que yo el último
