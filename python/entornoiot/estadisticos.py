@@ -26,12 +26,12 @@ class CalculadoraModa(CalculadoraEstadistico):
 
 class CalculadoraMax(CalculadoraEstadistico):
     def aplicar_alg(self, valores: list[float]) -> float:
-        return max(valores)
+        return reduce(lambda maximo, candidato: candidato if candidato > maximo else maximo, valores)
 
 
 class CalculadoraMin(CalculadoraEstadistico):
     def aplicar_alg(self, valores: list[float]) -> float:
-        return min(valores)
+        return reduce(lambda minimo, candidato: candidato if candidato < minimo else minimo, valores)
 
 
 class CalculadoraCuasiVar(CalculadoraEstadistico):
