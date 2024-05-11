@@ -21,11 +21,11 @@ def test_calcula_estadisticos_inicializado_correctamente():
     assert objeto0._indice_actual == 0
     assert objeto0._temperaturas_a_mantener == 2
     assert not objeto0._is_lista_entera
-    assert not objeto0._manejador_temperaturas
+    assert not objeto0.manejador_temperaturas
     assert len(objeto0._calculadoras_de_estadisticos) == 0
 
     objeto1 = CalculaEstadisticos(4, objeto0)
-    assert objeto1._manejador_temperaturas is objeto0
+    assert objeto1.manejador_temperaturas is objeto0
 
 
 # Al parecer capsys se usa para capturar el output de un test
@@ -84,11 +84,11 @@ def test_comprobador_umbral_inicializado_correctamente():
     assert objeto0._indice_actual == 0
     assert objeto0._temperaturas_a_mantener == 1
     assert not objeto0._is_lista_entera
-    assert not objeto0._manejador_temperaturas
+    assert not objeto0.manejador_temperaturas
     assert objeto0._umbral == 5
 
     objeto1 = ComprobadorUmbral(4, objeto0)
-    assert objeto1._manejador_temperaturas is objeto0
+    assert objeto1.manejador_temperaturas is objeto0
 
 
 def test_comprobador_umbral(capsys):
@@ -140,11 +140,11 @@ def test_comprobador_delta_inicializado_correctamente():
     assert objeto0._indice_actual == 0
     assert objeto0._temperaturas_a_mantener == 3
     assert not objeto0._is_lista_entera
-    assert not objeto0._manejador_temperaturas
+    assert not objeto0.manejador_temperaturas
     assert objeto0._delta == 5
 
     objeto1 = ComprobadorDelta(4, 6, objeto0)
-    assert objeto1._manejador_temperaturas is objeto0
+    assert objeto1.manejador_temperaturas is objeto0
 
 
 def test_comprobador_delta(capsys):

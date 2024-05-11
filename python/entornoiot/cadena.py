@@ -8,14 +8,14 @@ class ManejaTemperaturas(ABC):
     _indice_actual: int
     _temperaturas_a_mantener: int
     _is_lista_entera: bool
-    _manejador_temperaturas: Optional["ManejaTemperaturas"]
+    manejador_temperaturas: Optional["ManejaTemperaturas"]
 
     def __init__(self, temperaturas_a_mantener: int, manejador_temperaturas: Optional["ManejaTemperaturas"] = None):
         self._temperaturas = list()
         self._indice_actual = 0
         self._temperaturas_a_mantener = temperaturas_a_mantener
         self._is_lista_entera = self._indice_actual == self._temperaturas_a_mantener
-        self._manejador_temperaturas = manejador_temperaturas
+        self.manejador_temperaturas = manejador_temperaturas
 
     def manejar_temperatura(self, nueva_temperatura: float):
         if not self._is_lista_entera:
@@ -39,8 +39,8 @@ class CalculaEstadisticos(ManejaTemperaturas):
         for nombre, calculadora in self._calculadoras_de_estadisticos.items():
             print(f"{nombre}\t: {round(calculadora.aplicar_alg(self._temperaturas), 3)}")
 
-        if self._manejador_temperaturas:
-            self._manejador_temperaturas.manejar_temperatura(nueva_temperatura)
+        if self.manejador_temperaturas:
+            self.manejador_temperaturas.manejar_temperatura(nueva_temperatura)
 
     def nueva_calculadora(self, nombre: str, calculadora: CalculadoraEstadistico):
         self._calculadoras_de_estadisticos[nombre] = calculadora
@@ -58,8 +58,8 @@ class ComprobadorUmbral(ManejaTemperaturas):
         print(f"¿Supera la temperatura actual los {self._umbral} grados?", end=" ")
         print("Sí" if self._temperaturas[0] > self._umbral else "No", end=".\n")
 
-        if self._manejador_temperaturas:
-            self._manejador_temperaturas.manejar_temperatura(nueva_temperatura)
+        if self.manejador_temperaturas:
+            self.manejador_temperaturas.manejar_temperatura(nueva_temperatura)
 
 
 class ComprobadorDelta(ManejaTemperaturas):
@@ -71,7 +71,7 @@ class ComprobadorDelta(ManejaTemperaturas):
         self._temperaturas_a_mantener = temperaturas_a_mantener
         self._is_lista_entera = self._indice_actual == self._temperaturas_a_mantener
         self._delta = delta
-        self._manejador_temperaturas = manejador_temperaturas
+        self.manejador_temperaturas = manejador_temperaturas
 
     def manejar_temperatura(self, nueva_temperatura: float):
         self._temperaturas[self._indice_actual] = nueva_temperatura
@@ -84,5 +84,5 @@ class ComprobadorDelta(ManejaTemperaturas):
         print(f"En los últimos {(self._temperaturas_a_mantener - 1) * 5} segundos, ¿ha aumentado la temperatura {self._delta} grados?", end=" ")
         print("Sí" if resultado else "No", end=".\n")
 
-        if self._manejador_temperaturas:
-            self._manejador_temperaturas.manejar_temperatura(nueva_temperatura)
+        if self.manejador_temperaturas:
+            self.manejador_temperaturas.manejar_temperatura(nueva_temperatura)
