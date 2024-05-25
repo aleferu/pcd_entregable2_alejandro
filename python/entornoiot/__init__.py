@@ -84,7 +84,7 @@ class Sistema:
     - _topic: str que representa el tópico Kafka en el que llegan los datos
     - _server_address: str que representa la dirección donde el servidor Kafka está alojado
     - _sensor: instancia de KafkaConsumer que lee los datos que se produzcan sobre el tópico '_topic'
-    - _subscriptores: instancias de ManejaTemperatura a las que enviar la temperatura cuando se reciban.
+    - _subscriptores: instancias de ManejaTemperaturas a las que enviar la temperatura cuando se reciban.
     """
     _instancia: Optional["Sistema"] = None
     "Única instancia que debería existir de la clase"
@@ -99,7 +99,7 @@ class Sistema:
     "Instancia de KafkaConsumer que lee los datos que se produzcan sobre el tópico '_topic'"
 
     _subscriptores: list[ManejaTemperaturas]
-    "Instancias de ManejaTemperatura a las que enviar la temperatura cuando se reciban."
+    "Instancias de ManejaTemperaturas a las que enviar la temperatura cuando se reciban."
 
     def __init__(self, topic: str, server_address: str):
         """
@@ -154,7 +154,7 @@ class Sistema:
 
         Parámetros
         ----------
-        - nuevo_subscriptor: Instancia de ManejaTemperatura a añadir a la lista
+        - nuevo_subscriptor: Instancia de ManejaTemperaturas a añadir a la lista
 
         Lanza
         -----
@@ -174,7 +174,7 @@ class Sistema:
 
         Parámetros
         ----------
-        - subscriptor: Instancia de ManejaTemperatura a eliminar a la lista
+        - subscriptor: Instancia de ManejaTemperaturas a eliminar a la lista
 
         Lanza
         -----
