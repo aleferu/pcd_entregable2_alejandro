@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>513</x>
+      <y>270</y>
+      <w>126</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Obtener instancia
+del sistema</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>234</x>
+      <y>450</y>
+      <w>72</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Usuario</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>468</y>
+      <w>243</w>
+      <h>297</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;250.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>513</x>
+      <y>414</y>
+      <w>126</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Establecer un
+objeto al que
+enviar una
+temperatura</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>513</x>
+      <y>558</y>
+      <w>126</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Leer el sensor</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>513</x>
+      <y>702</y>
+      <w>126</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Enviar las
+temperaturas
+recibidas</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>315</y>
+      <w>243</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;180.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>450</y>
+      <w>243</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;30.0;250.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>468</y>
+      <w>243</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;250.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1062</x>
+      <y>387</y>
+      <w>360</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>Crear una cadena</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>738</x>
+      <y>414</y>
+      <w>126</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Crear una cadena</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1080</x>
+      <y>423</y>
+      <w>153</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Se añade un
+CalculaEstadisticos</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1251</x>
+      <y>423</y>
+      <w>153</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Se añade un
+comprobador</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>450</y>
+      <w>126</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>855</x>
+      <y>450</y>
+      <w>225</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1143</x>
+      <y>513</y>
+      <w>90</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;include&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1080</x>
+      <y>603</y>
+      <w>153</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Se añade una
+calculadora</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>513</x>
+      <y>126</y>
+      <w>126</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Dar de baja un
+subscriptor</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>171</y>
+      <w>243</w>
+      <h>324</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;340.0;250.0;10.0</additional_attributes>
+  </element>
+</diagram>
