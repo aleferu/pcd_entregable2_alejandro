@@ -189,6 +189,8 @@ class Sistema:
         """
         Método encargado de recibir las temperaturas y los tiempos, imprimir la información, y enviar la temperatura
         a los objetos que se hayan suscrito.
+
+        AVISO: bucle infinito
         """
         for lectura in self._sensor:
             mensaje = lectura.value
@@ -203,4 +205,4 @@ class Sistema:
         Método encargado de enviar la temperatura a los objetos que se hayan suscrito.
         """
         for subscriptor in self._subscriptores:
-            subscriptor.manejar_temperatura(temperatura)
+            subscriptor.nueva_temperatura(temperatura)

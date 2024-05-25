@@ -50,6 +50,18 @@ class ManejaTemperaturas(ABC):
         self._is_lista_entera = False
         self.manejador_temperaturas = manejador_temperaturas
 
+    def nueva_temperatura(self, nueva_temperatura: float):
+        """
+        Dada una nueva temperatura, guarda dicha temperatura en la lista, realiza la operación que necesite hacer
+        y envía la temperatura al siguiente en la cadena.
+
+        Parámetros
+        ----------
+        - nueva_temperatura: número que representa la nueva temperatura recibida
+        """
+        self.manejar_temperatura(nueva_temperatura)
+        self.siguiente(nueva_temperatura)
+
     def manejar_temperatura(self, nueva_temperatura: float):
         """
         Dada una nueva temperatura, guarda dicha temperatura en la lista.
@@ -65,6 +77,17 @@ class ManejaTemperaturas(ABC):
         self._indice_actual = (self._indice_actual + 1) % self._temperaturas_a_mantener
         if self._indice_actual == 0 and not self._is_lista_entera:
             self._is_lista_entera = True
+
+    def siguiente(self, temperatura: float):
+        """
+        Método encargado de enviar una temperatura a la cadena.
+
+        Parámetros
+        ----------
+        - nueva_temperatura: número que representa temperatura a enviar
+        """
+        if self.manejador_temperaturas:
+            self.manejador_temperaturas.manejar_temperatura(temperatura)
 
 
 class CalculaEstadisticos(ManejaTemperaturas):
@@ -111,9 +134,6 @@ class CalculaEstadisticos(ManejaTemperaturas):
         for nombre, calculadora in self._calculadoras_de_estadisticos.items():
             print(f"{nombre}\t: {round(calculadora.aplicar_alg(self._temperaturas), 3)}")
 
-        if self.manejador_temperaturas:
-            self.manejador_temperaturas.manejar_temperatura(nueva_temperatura)
-
     def nueva_calculadora(self, nombre: str, calculadora: CalculadoraEstadistico):
         """
         Guarda una nueva calculadora en el diccionario de temperaturas.
@@ -154,7 +174,7 @@ class ComprobadorUmbral(ManejaTemperaturas):
         - manejador_temperaturas: parámetro opcional que indica el siguiente objeto de la clase ManejaTemperaturas
         """
         super().__init__(1, manejador_temperaturas)
-        self._umbral = umbral
+        self.set_umbral(umbral)
 
     def manejar_temperatura(self, nueva_temperatura: float):
         """
@@ -169,8 +189,8 @@ class ComprobadorUmbral(ManejaTemperaturas):
         print(f"¿Supera la temperatura actual los {self._umbral} grados?", end=" ")
         print("Sí" if self._temperaturas[0] > self._umbral else "No", end=".\n")
 
-        if self.manejador_temperaturas:
-            self.manejador_temperaturas.manejar_temperatura(nueva_temperatura)
+    def set_umbral(self, umbral: float):
+        self._umbral = umbral
 
 
 class ComprobadorDelta(ManejaTemperaturas):
@@ -205,7 +225,7 @@ class ComprobadorDelta(ManejaTemperaturas):
         self._indice_actual = 0
         self._temperaturas_a_mantener = temperaturas_a_mantener
         self._is_lista_entera = False
-        self._delta = delta
+        self.set_delta(delta)
         self.manejador_temperaturas = manejador_temperaturas
 
     def manejar_temperatura(self, nueva_temperatura: float):
@@ -227,5 +247,5 @@ class ComprobadorDelta(ManejaTemperaturas):
         print(f"En los últimos {(self._temperaturas_a_mantener - 1) * 5} segundos, ¿ha aumentado la temperatura {self._delta} grados?", end=" ")
         print("Sí" if resultado else "No", end=".\n")
 
-        if self.manejador_temperaturas:
-            self.manejador_temperaturas.manejar_temperatura(nueva_temperatura)
+    def set_delta(self, delta: float):
+        self._delta = delta

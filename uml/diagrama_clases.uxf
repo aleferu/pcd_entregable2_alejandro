@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>7</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>322</x>
-      <y>203</y>
-      <w>252</w>
-      <h>168</h>
+      <x>246</x>
+      <y>366</y>
+      <w>216</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>Sistema
 -
@@ -27,10 +27,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>175</x>
-      <y>0</y>
-      <w>217</w>
-      <h>91</h>
+      <x>252</x>
+      <y>204</y>
+      <w>186</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>SensorTemperatura
 -
@@ -44,10 +44,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>623</x>
-      <y>315</y>
-      <w>364</w>
-      <h>70</h>
+      <x>930</x>
+      <y>456</y>
+      <w>312</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>CalculaEstadisticos
 -
@@ -60,10 +60,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>28</x>
-      <y>588</y>
-      <w>196</w>
-      <h>70</h>
+      <x>420</x>
+      <y>708</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>CalculadoraMedia
 -
@@ -73,10 +73,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>252</x>
-      <y>588</y>
-      <w>196</w>
-      <h>70</h>
+      <x>612</x>
+      <y>708</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>CalculadoraModa
 -
@@ -86,32 +86,32 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>147</x>
-      <y>511</y>
-      <w>553</w>
-      <h>91</h>
+      <x>522</x>
+      <y>642</y>
+      <w>474</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>770.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>770.0;10.0;770.0;60.0;10.0;60.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>315</x>
-      <y>511</y>
-      <w>385</w>
-      <h>91</h>
+      <x>666</x>
+      <y>642</y>
+      <w>330</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>530.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>530.0;10.0;530.0;60.0;10.0;60.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1036</x>
-      <y>140</y>
-      <w>266</w>
-      <h>98</h>
+      <x>534</x>
+      <y>402</y>
+      <w>228</w>
+      <h>102</h>
     </coordinates>
     <panel_attributes>/ManejaTemperaturas/
 -
@@ -121,80 +121,50 @@
 - is_lista_entera: bool
 + manejador_temperaturas: ManejaTemperaturas
 -
++ nueva_temperatura(nueva_temperatura: float)
 + manejar_temperatura(nueva_temperatura: float)
-</panel_attributes>
++ siguiente(temperatura: float)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1022</x>
-      <y>315</y>
-      <w>259</w>
-      <h>56</h>
+      <x>930</x>
+      <y>378</y>
+      <w>222</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>ComprobadorUmbral
 -
 - umbral: float
 -
-+ manejar_temperatura(nueva_temperatura: float)</panel_attributes>
++ manejar_temperatura(nueva_temperatura: float)
++ set_umbral(umbral: float)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1302</x>
-      <y>315</y>
-      <w>259</w>
-      <h>56</h>
+      <x>936</x>
+      <y>300</y>
+      <w>222</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>ComprobadorDelta
 -
 - delta: float
 -
-+ manejar_temperatura(nueva_temperatura: float)</panel_attributes>
++ manejar_temperatura(nueva_temperatura: float)
++ set_delta(delta: float)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>777</x>
-      <y>231</y>
-      <w>343</w>
-      <h>98</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>470.0;10.0;10.0;120.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1078</x>
-      <y>231</y>
-      <w>42</w>
-      <h>98</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>40.0;10.0;10.0;120.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1099</x>
-      <y>231</y>
-      <w>287</w>
-      <h>98</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;390.0;120.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1190</x>
-      <y>112</y>
-      <w>210</w>
-      <h>91</h>
+      <x>666</x>
+      <y>378</y>
+      <w>180</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 manejador_temperaturas</panel_attributes>
@@ -203,21 +173,21 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>175</y>
-      <w>483</w>
-      <h>70</h>
+      <x>456</x>
+      <y>432</y>
+      <w>90</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;80.0;670.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>616</x>
-      <y>448</y>
-      <w>196</w>
-      <h>70</h>
+      <x>924</x>
+      <y>588</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>/CalculadoraEstadistico/
 -
@@ -227,21 +197,21 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>679</x>
-      <y>378</y>
-      <w>21</w>
-      <h>84</h>
+      <x>978</x>
+      <y>510</y>
+      <w>18</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>476</x>
-      <y>588</y>
-      <w>196</w>
-      <h>70</h>
+      <x>804</x>
+      <y>708</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>CalculadoraMax
 -
@@ -251,21 +221,21 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>539</x>
-      <y>511</y>
-      <w>161</w>
-      <h>91</h>
+      <x>858</x>
+      <y>642</y>
+      <w>138</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>210.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>210.0;10.0;210.0;60.0;10.0;60.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>0</x>
-      <y>427</y>
-      <w>1372</w>
-      <h>259</h>
+      <x>396</x>
+      <y>570</y>
+      <w>1176</w>
+      <h>222</h>
     </coordinates>
     <panel_attributes>Strategy</panel_attributes>
     <additional_attributes/>
@@ -273,10 +243,10 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>308</x>
-      <y>175</y>
-      <w>280</w>
-      <h>224</h>
+      <x>234</x>
+      <y>342</y>
+      <w>240</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>Singleton</panel_attributes>
     <additional_attributes/>
@@ -284,10 +254,10 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>609</x>
-      <y>105</y>
-      <w>1232</w>
-      <h>294</h>
+      <x>492</x>
+      <y>282</y>
+      <w>1056</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>Chain of Command</panel_attributes>
     <additional_attributes/>
@@ -295,10 +265,10 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>273</x>
-      <y>140</y>
-      <w>728</w>
-      <h>273</h>
+      <x>204</x>
+      <y>312</y>
+      <w>624</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>Observer</panel_attributes>
     <additional_attributes/>
@@ -306,10 +276,10 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>700</x>
-      <y>588</y>
-      <w>196</w>
-      <h>70</h>
+      <x>996</x>
+      <y>708</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>CalculadoraMin
 -
@@ -319,21 +289,21 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>679</x>
-      <y>511</y>
-      <w>105</w>
-      <h>91</h>
+      <x>978</x>
+      <y>642</y>
+      <w>90</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;130.0;60.0;130.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>924</x>
-      <y>588</y>
-      <w>196</w>
-      <h>70</h>
+      <x>1188</x>
+      <y>708</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>CalculadoraMin
 -
@@ -343,21 +313,21 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>679</x>
-      <y>511</y>
-      <w>329</w>
-      <h>91</h>
+      <x>978</x>
+      <y>642</y>
+      <w>282</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;450.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;450.0;60.0;450.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1148</x>
-      <y>588</y>
-      <w>196</w>
-      <h>70</h>
+      <x>1380</x>
+      <y>708</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>CalculadoraMin
 -
@@ -367,12 +337,45 @@ manejador_temperaturas</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>679</x>
-      <y>511</y>
-      <w>553</w>
-      <h>91</h>
+      <x>978</x>
+      <y>642</y>
+      <w>474</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;770.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;770.0;60.0;770.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>480</y>
+      <w>186</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;290.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>414</y>
+      <w>186</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;120.0;200.0;120.0;200.0;10.0;290.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>330</y>
+      <w>192</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;260.0;200.0;260.0;200.0;10.0;300.0;10.0</additional_attributes>
   </element>
 </diagram>

@@ -62,15 +62,15 @@ def test_calcula_estadisticos_cadena(capsys):
     calcula_estadisticos1 = CalculaEstadisticos(3, calcula_estadisticos0)
     calcula_estadisticos1.nueva_calculadora("Media", CalculadoraMedia())
 
-    calcula_estadisticos1.manejar_temperatura(1)
+    calcula_estadisticos1.nueva_temperatura(1)
     out, _ = capsys.readouterr()
     assert out == "Media\t: 1.0\nVarianza\t: 0\n"
 
-    calcula_estadisticos1.manejar_temperatura(2)
+    calcula_estadisticos1.nueva_temperatura(2)
     out, _ = capsys.readouterr()
     assert out == "Media\t: 1.5\nVarianza\t: 0.5\n"
 
-    calcula_estadisticos1.manejar_temperatura(3)
+    calcula_estadisticos1.nueva_temperatura(3)
     out, _ = capsys.readouterr()
     assert out == "Media\t: 2.0\nVarianza\t: 0.5\n"
 
@@ -115,17 +115,17 @@ def test_comprobador_umbral_cadena(capsys):
     umbral1 = 3
     comprobador_umbral1 = ComprobadorUmbral(umbral1, comprobador_umbral0)
 
-    comprobador_umbral1.manejar_temperatura(1.5)
+    comprobador_umbral1.nueva_temperatura(1.5)
     out, _ = capsys.readouterr()
     assert out == f"¿Supera la temperatura actual los {umbral1} grados? No.\n" +\
         f"¿Supera la temperatura actual los {umbral0} grados? No.\n"
 
-    comprobador_umbral1.manejar_temperatura(2.5)
+    comprobador_umbral1.nueva_temperatura(2.5)
     out, _ = capsys.readouterr()
     assert out == f"¿Supera la temperatura actual los {umbral1} grados? No.\n" +\
         f"¿Supera la temperatura actual los {umbral0} grados? Sí.\n"
 
-    comprobador_umbral1.manejar_temperatura(3.5)
+    comprobador_umbral1.nueva_temperatura(3.5)
     out, _ = capsys.readouterr()
     assert out == f"¿Supera la temperatura actual los {umbral1} grados? Sí.\n" +\
         f"¿Supera la temperatura actual los {umbral0} grados? Sí.\n"
@@ -182,17 +182,17 @@ def test_comprobador_delta_cadena(capsys):
     delta1 = 3
     comprobador_delta1 = ComprobadorDelta(temperaturas_a_mantener1, delta1, comprobador_delta0)
 
-    comprobador_delta1.manejar_temperatura(0.5)
+    comprobador_delta1.nueva_temperatura(0.5)
     out, _ = capsys.readouterr()
     assert out == f"En los últimos {(temperaturas_a_mantener1 - 1) * 5} segundos, ¿ha aumentado la temperatura {delta1} grados? No.\n" +\
         f"En los últimos {(temperaturas_a_mantener0 - 1) * 5} segundos, ¿ha aumentado la temperatura {delta0} grados? No.\n"
 
-    comprobador_delta1.manejar_temperatura(2.5)
+    comprobador_delta1.nueva_temperatura(2.5)
     out, _ = capsys.readouterr()
     assert out == f"En los últimos {(temperaturas_a_mantener1 - 1) * 5} segundos, ¿ha aumentado la temperatura {delta1} grados? No.\n" +\
         f"En los últimos {(temperaturas_a_mantener0 - 1) * 5} segundos, ¿ha aumentado la temperatura {delta0} grados? Sí.\n"
 
-    comprobador_delta1.manejar_temperatura(15)
+    comprobador_delta1.nueva_temperatura(15)
     out, _ = capsys.readouterr()
     assert out == f"En los últimos {(temperaturas_a_mantener1 - 1) * 5} segundos, ¿ha aumentado la temperatura {delta1} grados? Sí.\n" +\
         f"En los últimos {(temperaturas_a_mantener0 - 1) * 5} segundos, ¿ha aumentado la temperatura {delta0} grados? Sí.\n"
