@@ -84,7 +84,7 @@ class Sistema:
     - _topic: str que representa el tópico Kafka en el que llegan los datos
     - _server_address: str que representa la dirección donde el servidor Kafka está alojado
     - _sensor: instancia de KafkaConsumer que lee los datos que se produzcan sobre el tópico '_topic'
-    - _subscriptores: instancias de ManejaTemperaturas a las que enviar la temperatura cuando se reciban.
+    - _subscriptores: instancias de ManejaTemperatura a las que enviar la temperatura cuando se reciban.
     """
     _instancia: Optional["Sistema"] = None
     "Única instancia que debería existir de la clase"
