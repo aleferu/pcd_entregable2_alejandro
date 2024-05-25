@@ -19,9 +19,15 @@ def main() -> None:
     """
     sistema_iot = Sistema.obtener_instancia("temperatura", "127.0.0.1:9092")
 
-    comprobador_delta = ComprobadorDelta(30 // 5 + 1, 10)
-    comprobador_umbral = ComprobadorUmbral(25, comprobador_delta)
-    calcula_estadisticos = CalculaEstadisticos(60 // 5, comprobador_umbral)
+    segundos_por_temperatura = 5
+    tiempo_estadisticos = 60
+    tiempo_delta = 30
+    delta = 10
+    umbral = 25
+
+    comprobador_delta = ComprobadorDelta(tiempo_delta // segundos_por_temperatura + 1, delta)
+    comprobador_umbral = ComprobadorUmbral(umbral, comprobador_delta)
+    calcula_estadisticos = CalculaEstadisticos(tiempo_estadisticos // segundos_por_temperatura + 1, comprobador_umbral)
 
     calcula_estadisticos.nueva_calculadora("Media", CalculadoraMedia())
     calcula_estadisticos.nueva_calculadora("Moda", CalculadoraModa())
