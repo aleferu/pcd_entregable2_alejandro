@@ -66,5 +66,8 @@ class SensorTemperatura:
 
 
 if __name__ == '__main__':
+    # sys.argv[0] es el nombre del archivo
+    # sys.argv[1] es la dirección del servidor de kafka (ejemplo 127.0.0.1:9092):
+    # sys.argv[2] es el tópico de kafka
     producer = SensorTemperatura(sys.argv[1], sys.argv[2], "5")
     producer.empezar_escritura()

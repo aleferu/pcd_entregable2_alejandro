@@ -26,6 +26,4 @@ Aunque no se debería hacer, se deja el documento generado en el repositorio por
 
 ## TODO
 
-- Patrones de diseño explicados.
-- Dos tags.
-- Capturas de lo anterior.
+- El tag final y su captura.
