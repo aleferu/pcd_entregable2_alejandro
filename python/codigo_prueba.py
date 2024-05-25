@@ -17,7 +17,7 @@ def main() -> None:
     """
     Se encarga de ejecutar todo el código de prueba e ir imprimiendo el proceso
     """
-    sistema_iot = Sistema("temperatura", "127.0.0.1:9092")
+    sistema_iot = Sistema.obtener_instancia("temperatura", "127.0.0.1:9092")
 
     comprobador_delta = ComprobadorDelta(30 // 5 + 1, 10)
     comprobador_umbral = ComprobadorUmbral(25, comprobador_delta)

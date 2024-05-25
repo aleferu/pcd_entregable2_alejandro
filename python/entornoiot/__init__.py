@@ -30,6 +30,7 @@ Las clases proporcionadas son:
 # Se necesitan las siguientes librerías externas
 from kafka import KafkaConsumer
 import json
+from typing import Optional
 
 # Clases a importar
 from .estadisticos import (
@@ -80,27 +81,40 @@ class Sistema:
     Atributos
     ---------
     - _instancia: única instancia que debería existir de la clase
-    - _topic: string que representa el tópico Kafka en el que llegan los datos
-    - _server_address: string que representa la dirección donde el servidor Kafka está alojado
+    - _topic: str que representa el tópico Kafka en el que llegan los datos
+    - _server_address: str que representa la dirección donde el servidor Kafka está alojado
     - _sensor: instancia de KafkaConsumer que lee los datos que se produzcan sobre el tópico '_topic'
     - _subscriptores: instancias de ManejaTemperaturas a las que enviar la temperatura cuando se reciban.
     """
-    _instancia: "Sistema"
+    _instancia: Optional["Sistema"] = None
     "Única instancia que debería existir de la clase"
 
     _topic: str
-    "String que representa el tópico Kafka en el que llegan los datos"
+    "str que representa el tópico Kafka en el que llegan los datos"
 
     _server_address: str
-    "String que representa la dirección donde el servidor Kafka está alojado"
+    "str que representa la dirección donde el servidor Kafka está alojado"
 
     _sensor: KafkaConsumer
     "Instancia de KafkaConsumer que lee los datos que se produzcan sobre el tópico '_topic'"
 
     _subscriptores: list[ManejaTemperaturas]
-    "Instancias de ManejaTemperaturas a las que enviar la temperatura cuando se reciban."
+    "Instancias de ManejaTemperatura a las que enviar la temperatura cuando se reciban."
 
     def __init__(self, topic: str, server_address: str):
+        """
+        Crea una instancia de Sistema. Sin embargo, esta clase sigue el patrón de diseño Singleton
+        y nunca debería instanciarse usando su constructor.
+
+        Parámetros
+        ----------
+        - topic: str que representa el tópico Kafka en el que llegan los datos
+        - server_adress: str que representa la dirección donde el servidor Kafka está alojado
+
+        Lanza
+        -----
+        - kafka.errors.NoBrokersAvailable si el servidor de Kafka no se encuentra
+        """
         self._topic = topic
         self._server_address = server_address
         self._sensor = KafkaConsumer(
@@ -110,12 +124,42 @@ class Sistema:
         )
         self._subscriptores = list()
 
-    def obtener_instancia(self) -> "Sistema":
-        if not self._instancia:
-            self._instancia = Sistema(self._topic, self._server_address)
-        return self._instancia
+    @classmethod
+    def obtener_instancia(cls, topic: Optional[str] = None, server_address: Optional[str] = None) -> "Sistema":
+        """
+        Método de clase encargado de instancia el único objeto que debería existir de la clase y de distribuir
+        dicho objeto donde se necesite.
+
+        Los parámetros se usarán solo en el caso de que se necesite crear el objeto y son opcionales.
+
+        Parámetros
+        ----------
+        - topic: str que representa el tópico Kafka en el que llegan los datos
+        - server_adress: str que representa la dirección donde el servidor Kafka está alojado
+
+        Lanza
+        -----
+        - kafka.errors.NoBrokersAvailable si el servidor de Kafka no se encuentra
+        - ValueError si el objeto no ha sido creado y no se han proporcionado alguno de los argumentos
+        """
+        if not cls._instancia:
+            if not topic or not server_address:
+                raise ValueError("No existe una instancia de Sistema ya creada y no se han especificado parámetros")
+            cls._instancia = Sistema(topic, server_address)
+        return cls._instancia
 
     def alta(self, nuevo_subscriptor: ManejaTemperaturas):
+        """
+        Método encargado de añadir a la lista de subscriptores un nuevo objeto.
+
+        Parámetros
+        ----------
+        - nuevo_subscriptor: Instancia de ManejaTemperatura a añadir a la lista
+
+        Lanza
+        -----
+        - ValueError si el objeto ya va a ser notificado, sea a través de una cadena o porque se encuentre en la lista
+        """
         for subscriptor in self._subscriptores:
             if nuevo_subscriptor is subscriptor:
                 raise ValueError("El objeto ya es suscriptor.")
@@ -125,12 +169,27 @@ class Sistema:
         self._subscriptores.append(nuevo_subscriptor)
 
     def baja(self, subscriptor: ManejaTemperaturas):
+        """
+        Método encargado de eliminar un objeto de la lista de subscriptores.
+
+        Parámetros
+        ----------
+        - subscriptor: Instancia de ManejaTemperatura a eliminar a la lista
+
+        Lanza
+        -----
+        - ValueError si el objeto ya no se encuentra en la lista
+        """
         try:
             self._subscriptores.remove(subscriptor)
         except ValueError:
             raise ValueError("El objeto no iba a ser notificado de primeras.")
 
     def leer_sensor(self):
+        """
+        Método encargado de recibir las temperaturas y los tiempos, imprimir la información, y enviar la temperatura
+        a los objetos que se hayan suscrito.
+        """
         for lectura in self._sensor:
             mensaje = lectura.value
             timestamp = mensaje["timestamp"]
@@ -140,5 +199,8 @@ class Sistema:
             print()
 
     def notificar(self, temperatura: float):
+        """
+        Método encargado de enviar la temperatura a los objetos que se hayan suscrito.
+        """
         for subscriptor in self._subscriptores:
             subscriptor.manejar_temperatura(temperatura)
