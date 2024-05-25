@@ -87,7 +87,7 @@ class ManejaTemperaturas(ABC):
         - nueva_temperatura: número que representa temperatura a enviar
         """
         if self.manejador_temperaturas:
-            self.manejador_temperaturas.manejar_temperatura(temperatura)
+            self.manejador_temperaturas.nueva_temperatura(temperatura)
 
 
 class CalculaEstadisticos(ManejaTemperaturas):
@@ -190,6 +190,13 @@ class ComprobadorUmbral(ManejaTemperaturas):
         print("Sí" if self._temperaturas[0] > self._umbral else "No", end=".\n")
 
     def set_umbral(self, umbral: float):
+        """
+        Establece un nuevo umbral.
+
+        Parámetros
+        ----------
+        - umbral: número que representa el nuevo umbral
+        """
         self._umbral = umbral
 
 
@@ -248,4 +255,11 @@ class ComprobadorDelta(ManejaTemperaturas):
         print("Sí" if resultado else "No", end=".\n")
 
     def set_delta(self, delta: float):
+        """
+        Establece un nuevo delta.
+
+        Parámetros
+        ----------
+        - delta: número que representa el nuevo delta
+        """
         self._delta = delta
