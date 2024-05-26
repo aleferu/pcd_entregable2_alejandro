@@ -5,8 +5,6 @@ EntornoIOT
 Se proporcionan las clases que he visto necesario hacer para cumplir
 con lo especificado en el enunciado de la entrega.
 
-La idea es utilizar las instancias de las demás clases a través de Sistema.
-
 Asignatura: Fundamentos de Programación para Ciencia de Datos
 Segunda práctica entregable: Sistema de Gestión de Datos de Sensores en un Entorno IoT
 Alumno: Alejandro Fernández Sánchez
@@ -31,6 +29,7 @@ Las clases proporcionadas son:
 from kafka import KafkaConsumer
 import json
 from typing import Optional
+
 
 # Clases a importar
 from .estadisticos import (
@@ -73,6 +72,9 @@ __all__ = [
 class Sistema:
     """
     Clase que se encarga de recibir la temperatura y enviarla a los objetos interesados.
+
+    La implementación planteada está pensada para funcionar con más de un subscriptor, aunque
+    en el enunciado solo se pida uno.
 
     Se trata de un singleton, así que su constructor no debería ser llamadado nunca.
 

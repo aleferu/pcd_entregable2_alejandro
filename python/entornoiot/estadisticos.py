@@ -3,6 +3,11 @@ from functools import reduce
 
 
 # Se ha forzado mucho el uso de las funciones map, filter y reduce en las implementaciones.
+# Incluso en algunos sitios donde se podría haber usado sum, max o min.
+# Esto es para demostrar conocimientos, no por eficiencia (seguramente la implementación
+# interna sea la más rápida en cada caso, pero habría que hacer pruebas).
+
+# Más específicamente, el cálculo de la moda es mucho más enrevesado de lo que podría ser.
 
 
 class CalculadoraEstadistico(ABC):
