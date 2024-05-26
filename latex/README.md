@@ -23,7 +23,3 @@ rm "49274537G-entregable2-pcd.aux" "49274537G-entregable2-pcd.log" "49274537G-en
 ## DISCLAIMER
 
 Aunque no se debería hacer, se deja el documento generado en el repositorio por si el profesor tiene algún problema con la generación del mismo.
-
-## TODO
-
-- El tag final y su captura.
