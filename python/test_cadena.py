@@ -40,18 +40,18 @@ def test_calcula_estadisticos_correctamente(capsys):
 
     calcula_estadisticos.manejar_temperatura(1)
     out, _ = capsys.readouterr()
-    assert out == "Media\t: 1.0\nVarianza\t: 0\n"
+    assert out == "Media    : 1.0\nVarianza : 0\n"
     assert calcula_estadisticos._temperaturas == [1]
 
     calcula_estadisticos.manejar_temperatura(2)
     out, _ = capsys.readouterr()
-    assert out == "Media\t: 1.5\nVarianza\t: 0.5\n"
+    assert out == "Media    : 1.5\nVarianza : 0.5\n"
     assert calcula_estadisticos._is_lista_entera
     assert calcula_estadisticos._temperaturas == [1, 2]
 
     calcula_estadisticos.manejar_temperatura(3)
     out, _ = capsys.readouterr()
-    assert out == "Media\t: 2.5\nVarianza\t: 0.5\n"
+    assert out == "Media    : 2.5\nVarianza : 0.5\n"
     assert calcula_estadisticos._temperaturas == [3, 2]
 
 
@@ -64,15 +64,15 @@ def test_calcula_estadisticos_cadena(capsys):
 
     calcula_estadisticos1.nueva_temperatura(1)
     out, _ = capsys.readouterr()
-    assert out == "Media\t: 1.0\nVarianza\t: 0\n"
+    assert out == "Media : 1.0\nVarianza : 0\n"
 
     calcula_estadisticos1.nueva_temperatura(2)
     out, _ = capsys.readouterr()
-    assert out == "Media\t: 1.5\nVarianza\t: 0.5\n"
+    assert out == "Media : 1.5\nVarianza : 0.5\n"
 
     calcula_estadisticos1.nueva_temperatura(3)
     out, _ = capsys.readouterr()
-    assert out == "Media\t: 2.0\nVarianza\t: 0.5\n"
+    assert out == "Media : 2.0\nVarianza : 0.5\n"
 
 
 # ComprobadorUmbral

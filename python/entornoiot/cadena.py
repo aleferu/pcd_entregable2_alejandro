@@ -131,8 +131,9 @@ class CalculaEstadisticos(ManejaTemperaturas):
         - nueva_temperatura: número que representa la nueva temperatura recibida
         """
         super().manejar_temperatura(nueva_temperatura)
+        largest_name_length = max(map(len, self._calculadoras_de_estadisticos.keys()))
         for nombre, calculadora in self._calculadoras_de_estadisticos.items():
-            print(f"{nombre}\t: {round(calculadora.aplicar_alg(self._temperaturas), 3)}")
+            print(f"{nombre}{' ' * (largest_name_length - len(nombre))} : {round(calculadora.aplicar_alg(self._temperaturas), 3)}")
 
     def nueva_calculadora(self, nombre: str, calculadora: CalculadoraEstadistico):
         """
